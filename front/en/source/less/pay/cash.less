@@ -1,0 +1,506 @@
+/**
+ * Author: CodeLai
+ * Email: codelai@dotdotbuy.com
+ * DateTime: 2016/7/20 10:44
+ */
+@import "../../less/old";
+
+@path: "/cn/source/img/pay/cash";
+@rank-path: "/cn/source/img/rank";
+@base-color: #f60;
+@base-color-1: #f2890f;
+/*隐藏导航*/
+#nav {
+    display: none;
+}
+
+/*Step*/
+.common_step {
+    width: 100%;
+    ul {
+        li {
+            line-height: 36px;
+            text-align: center;
+            width: 25%;
+            background: url("@{rank-path}/step_not.png") 10px center no-repeat #e9e9e9;
+            float: left;
+            color: #727272;
+            position: relative;
+            &.complete {
+                background: #f2890f;
+                color: #fff;
+                .step-icon {
+                    width: 17px;
+                    height: 12px;
+                    background: #e9e9e9;
+                    display: inline-block;
+                }
+                .witerline {
+                    position: absolute;
+                    right: 0;
+                    width: 1px;
+                    height: 18px;
+                    background: #f4b873;
+                    top: 9px;
+                }
+                .step-icon {
+                    background: url("@{rank-path}/step_compelet.png") center center no-repeat #f2890f;
+                    padding-right: 7px;
+                }
+            }
+            &.select {
+                background: #f2890f;
+                color: #fff;
+                .step-icon {
+                    background: #f2890f;
+                }
+            }
+        }
+    }
+    div {
+        &.step_text {
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    }
+    .step_text {
+        span {
+            display: inline-block;
+        }
+    }
+    .mod_arrow {
+        position: absolute;
+        left: 50%;
+        bottom: -22px;
+        margin-left: -12px;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        font-size: 0;
+        display: block;
+        //border-width: 11px;
+        //border-color: #fff transparent transparent transparent;
+        //border-style: solid dashed dashed dashed;
+        border: 11px dashed transparent;
+        border-top: 11px solid #fff;
+    }
+    .select {
+        .mod_arrow {
+            border-color: #f2890f transparent transparent transparent;
+        }
+    }
+}
+
+.common_status {
+    margin-top: 26px;
+    .timeline {
+        position: relative;
+        height: 21px;
+        overflow: hidden;
+    }
+    .status_ul {
+        float: left;
+        width: 100%;
+        li {
+            float: left;
+            width: 12.5%;
+            &.select {
+                .status_radius {
+                    background: url("@{rank-path}/step_green.png") no-repeat;
+                }
+                .status_line {
+                    background: #70c100;
+                }
+                .status_name {
+                    color: #70c100;
+                }
+            }
+        }
+        .status_frist {
+            margin-top: 5px;
+        }
+        .status_name {
+            color: #727272;
+            text-align: center;
+            font-family: "arial";
+        }
+        .status_time {
+            color: #aaa;
+            margin-top: 15px;
+            text-align: center;
+        }
+    }
+    .status_line {
+        width: 100%;
+        background: #e0e0e0;
+        height: 4px;
+        margin-top: 9px;
+    }
+    .status_radius {
+        text-align: center;
+        width: 21px;
+        height: 21px;
+        background: url("@{path}/step_grey.png") no-repeat;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        margin-left: -10px;
+        z-index: 100;
+        color: #fff;
+    }
+}
+
+/*订单支付信息*/
+.order-total {
+    width: 100%;
+    margin-top: 15px;
+    .order-total-info {
+        background: rgba(242, 242, 242, 1);
+        border: 1px solid rgba(228, 228, 228, 1);
+        padding: 13px 0 14px 0;
+        color: #222;
+    }
+    .timer {
+        color: @base-color;
+    }
+    .pkg-success-info {
+        font-size: 22px;
+    }
+    .package-num {
+        color: @base-color;
+    }
+    .order-nums {
+        margin-top: 3px;
+    }
+    .order-info-price {
+        //width: 370px;
+    }
+
+    .txt-mt {
+        margin-top: 4px;
+    }
+
+    .order-info {
+        margin-right: 22px;
+        margin-top: 13px;
+        //background: url("@{path}/detail-icon.png") no-repeat right 3px;
+        //padding-right: 13px;
+        cursor: pointer;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+    .order-info-icon {
+        display: inline-block;
+        width: 13px;
+        height: 21px;
+        vertical-align: bottom;
+        background: url("@{path}/detail-icon.png") no-repeat center 4px;
+        -webkit-transition: transform .2s ease-in-out;
+        -moz-transition: transform .2s ease-in-out;
+        -o-transition: transform .2s ease-in-out;
+        transition: transform .2s ease-in-out;
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        transform: rotate(180deg);
+        &.open {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    .reload {
+        margin-left: 34px;
+    }
+
+    .order-info-detail {
+        -webkit-transition: all .2s ease-in-out;
+        -moz-transition: all .2s ease-in-out;
+        -o-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+        height: 0;
+        overflow: hidden;
+    }
+    .info-table {
+        width: 100%;
+        text-align: center;
+        th {
+            height: 34px;
+            line-height: 34px;
+            background: #fafafa;
+            font-family: '宋体';
+            color: #949494;
+        }
+        td {
+            height: 24px;
+            line-height: 24px;
+        }
+    }
+
+    .item-name {
+        width: 593px;
+    }
+
+    .item-price {
+        width: 277px;
+    }
+
+    .item-nums {
+        width: 214px;
+    }
+
+    .info-first {
+        padding-top: 6px;
+    }
+
+    .num-baseline {
+        position: relative;
+        top: 2px;
+    }
+}
+
+/*支付方式*/
+@pay-width: 192px;
+.pay-ways {
+    .arrows {
+        border-top: 1px solid rgba(215, 215, 215, 1);
+        position: relative;
+        z-index: -1;
+        li {
+            position: relative;
+            top: -1px;
+            display: inline-block;
+            background: url("@{path}/arrow.png") no-repeat center 1px;
+            width: 198px;
+            margin-right: 6px;
+            height: 17px;
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+
+        }
+    }
+    .items li {
+        &.select {
+            border-color: #f60;
+            position: relative;
+            .select-icon {
+                display: block;
+                background: url("@{path}/select-icon-bg.png") no-repeat left top;
+                width: 36px;
+                height: 31px;
+                right: -1px;
+                bottom: -1px;
+            }
+        }
+        width: @pay-width;
+        height: 101px;
+        border: 3px solid #eee;
+        position: relative;
+        margin-right: 6px;
+        cursor: pointer;
+        display: inline-block;
+        .select-icon {
+            display: none;
+        }
+    }
+
+}
+
+.pl-item-name {
+    padding-left: 19px;
+}
+
+.hckie7 {
+    display: table-cell;
+    vertical-align: middle;
+    width: @pay-width;
+    height: 101px;
+}
+
+.vmid_wrap {
+    top: 50%;
+    text-align: center;
+    width: @pay-width;
+}
+
+.pay-icon {
+    margin-right: 10px;
+}
+
+.pay-way {
+    display: inline-block;
+    color: #151414;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.pay-way-name {
+    display: inline-block;
+    max-width: 120px;
+    text-align: left;
+    .vm;
+}
+
+.need-pay-info {
+    margin-top: 24px;
+}
+
+/*橘红色金额样式*/
+.money-style {
+    color: #f60;
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+    bottom: -2px;
+}
+
+.tips-info {
+    line-height: 18px;
+}
+
+.remain,
+.text-pay-info {
+    color: #151414;
+}
+
+.tips-info-orange {
+    color: #f2890f;
+}
+
+.tips-info-grey {
+    color: #999;
+}
+
+.go-pay-btn {
+    background: #f60;
+    display: inline-block;
+    border-radius: 2px;
+    padding: 10px 32px;
+    color: #fff !important;
+    &.disabled {
+        background: lighten(#f60, 22%);
+        color: darken(#fff, 5%) !important;
+        cursor: default;
+    }
+}
+
+/*paypal*/
+.pay-info {
+    //margin-top: 43px;
+}
+
+/*银行卡列表*/
+.pay-stylelist {
+    background: url("@{path}/icon_bankpay.png") no-repeat #fff 11px 11px;
+    height: 270px;
+    padding: 10px 0 10px 10px;
+    width: 606px;
+    margin: auto;
+    &:hover {
+        background: url("@{path}/icon_bankpay.png") no-repeat #fff 11px 11px;
+    }
+    li {
+        cursor: pointer;
+        padding-left: 5px;
+        width: 185px;
+        border: 1px solid #eaeaea;
+        height: 36px;
+        line-height: 36px;
+        display: inline-block;
+        margin: 0 10px 10px 0;
+        &:hover {
+            border-color: #fa3
+        }
+    }
+    .select {
+        border-color: #fa3
+    }
+}
+
+/*支付问题*/
+.pay-question {
+    border: 1px solid #e1e1e1;
+    padding: 36px 21px;
+    margin-top: 29px;
+}
+
+.title-pay-question,
+.question-list {
+    color: #666;
+}
+
+.question-list {
+    dt {
+        margin-top: 23px;
+    }
+}
+
+.question-list {
+    line-height: 20px;
+}
+
+/*微信支付*/
+.border-pay-moudle {
+    border: 1px solid #e1e1e1;
+    padding: 15px 18px 38px;
+    margin-top: 29px;
+}
+
+.wx-ss-mt15 {
+    margin-top: 15px;
+}
+
+.ss-img-box {
+    width: 208px;
+    height: 262px;
+    border: 1px solid #ddd;
+    padding: 26px;
+    z-index: 2;
+    background: #fff;
+}
+
+.ss-img-box-ml {
+    margin-left: 229px;
+}
+
+.wx-pay-ss-img {
+    margin-left: 148px;
+    z-index: 1;
+}
+
+.ss-img,
+.ss-img img {
+    width: 210px;
+    height: 211px;
+}
+
+.ss-img-info {
+    color: #151414;
+    font-size: 14px;
+    font-family: '宋体';
+    padding-left: 45px;
+    width: 112px;
+    margin: 18px auto 0;
+    background: url("@{path}/ss-wx-icon.png") no-repeat 0 0;
+}
+
+.money-title {
+    width: 50%;
+    .fl;
+    .tr;
+    &.top-fixed {
+        margin-top: 12px;
+    }
+    & + div {
+        width: 50%;
+        .fr;
+        .tl;
+    }
+}

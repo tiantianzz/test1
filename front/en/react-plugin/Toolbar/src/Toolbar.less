@@ -1,0 +1,122 @@
+@import "../../../../plugin/less/class.less";
+
+.m-toolBar{
+  position: fixed; right: 0; top: 50%; transform: translateY(-50%); width: 40px; z-index: 100;
+
+  li{
+    cursor: pointer;  margin-left: 0; transition:all .2s cubic-bezier(0.645, 0.045, 0.355, 1); opacity: 0; transform: translateX(100%);
+
+    a {
+      display: block; width: 40px; position: relative; right: 0; float: right; background: rgba(48,52,64,.5); cursor: pointer !important;
+
+      &:hover{
+        width: 120px;
+        .toolBar-text{ display: block;}
+        .toolBar-icon:not(.toolBar-menu a){ background-color: #303440 !important;}
+      }
+
+      &:last-of-type:hover{ background-color: #303440;}
+    }
+
+  }
+
+  li:nth-child(1){ transition-delay: 0ms; }
+  li:nth-child(2){ transition-delay: 35ms; }
+  li:nth-child(3){ transition-delay: 70ms; }
+  li:nth-child(4){ transition-delay: 105ms; }
+  li:nth-child(5){ transition-delay: 140ms; }
+  li:nth-child(6){ transition-delay: 175ms; }
+  li:nth-child(7){ transition-delay: 210ms; }
+  li:nth-child(8){ transition-delay: 245ms; }
+
+  .toolBar-icon{
+    display: block; width: 40px; height: 40px; background: url('@{webpath_cn}Toolbar/toolbar2.png') no-repeat; float: right; border-bottom: 1px solid rgba(255,255,255,.4);
+  }
+
+  .toolBar-icon-app{ background-position: 0 0; }
+  .toolBar-icon-cart{ background-position: 0 -40px; }
+  .toolBar-icon-pkg{ background-position: 0 -80px; }
+  .toolBar-icon-qq{ background-position: 0 -120px; }
+  .toolBar-icon-online{ background-position: 0 -160px; }
+  .toolBar-icon-advice{ background-position: 0 -200px; }
+  .toolBar-icon-group{ background-position: 0 -240px; }
+  .toolBar-icon-menu{ background-position: 0 -280px; }
+
+  .toolBar-text{
+    width: 80px; height: 40px; line-height: 40px; color: #fff; text-align: center; float: right; display: none; background: #303440;
+  }
+
+  .toolBar-menu{
+    opacity: 1; transform: translateX(0);
+    .toolBar-icon{
+      border-bottom: 0; transform: rotate(0deg) translate(1px); transition:all .2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+  }
+
+  .toolBar-number{
+    position: absolute; top: 4px; right: 4px; height: 16px; min-width: 10px; text-align: center; background: #ff4c62; border-radius: 8px; font-size: 12px; line-height: 16px; padding: 0 3px; color: #fff; max-width: 30px; overflow: hidden;
+  }
+
+}
+
+.toolBar-show{
+  li:not(.toolBar-menu){
+    transform: translateX(0); opacity: 1;
+  }
+
+  .toolBar-menu{
+    .toolBar-icon{
+      transform: rotate(-180deg) translate(-1px); transition:all .2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+  }
+}
+
+#toolbar-QRCode{
+  a{
+    &:hover{
+      width: 180px;
+      div{
+        display: block;
+      }
+    }
+  }
+
+  div{
+    width: 140px; position: absolute; left: 0; top: 0; display: none; background: #303440; color: #fff; text-align: center; font-size: 12px; line-height: 20px; padding-bottom: 4px;
+
+    img{
+      display: block; width: 80%; height: auto; margin: 10% 10% 5px 10%;
+    }
+  }
+}
+
+#toolbar-Cart{
+
+  em{
+    position: absolute; top: 4px; right: 4px; height: 16px; background: #ff4c62; border-radius: 8px; font-size: 12px; line-height: 16px; padding: 0 2px; color: #fff; display: none;
+  }
+
+  &.active{
+    em{
+      animation: addOne 1.8s ease forwards; display: block;
+    }
+  }
+}
+
+@keyframes addOne {
+  0% {
+    transform: translateY(10px); opacity: 0;
+  }
+
+  25%{
+    transform: translateY(0px); opacity: 1;
+  }
+
+  75%{
+    transform: translateY(0px); opacity: 1;
+  }
+
+  100%{
+    transform: translateY(-7px); opacity: 0;
+  }
+}

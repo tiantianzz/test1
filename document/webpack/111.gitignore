@@ -1,0 +1,13 @@
+node_modules
+/.gitignore
+/package.json
+/webpack.txt
+.idea/
+
+/webpack.config-init.js
+/webpack.config-init-src.js
+/webpack.config-clear.js
+/webpack.config-wrap.js
+/webpack.config-static.js
+/webpack.config.js
+/webpack.deploy.config.js

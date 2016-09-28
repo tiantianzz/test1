@@ -1,0 +1,304 @@
+/**
+ * Author: CodeLai
+ * Email: codelai@dotdotbuy.com
+ * FileName: 
+ * DateTime: 2016/8/16 14:58
+ */
+@import "../../../../plugin/less/class.less";
+
+@base-color: #039be5;
+.transition(@style,@time:.2s) {
+    -webkit-transition: @style @time ease-in-out;
+    -moz-transition: @style @time ease-in-out;
+    -o-transition: @style @time ease-in-out;
+    transition: @style @time ease-in-out;
+}
+
+@gray: #9e9e9e;
+.border-radius(@radius:0) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+
+a {
+    cursor: pointer;
+    color: @base-color;
+    &:hover {
+        text-decoration: none;
+        color: darken(@base-color, 5%);
+    }
+}
+
+h2 {
+    font-size: 2em;
+}
+
+div, p, ul, li, a {
+    box-sizing: border-box;
+}
+
+.hide {
+    display: none;
+}
+
+.gray {
+    color: @gray;
+}
+
+.main {
+    width: 100%;
+    padding: 30px 0;
+    background: url("@{webpath_cn}video/index/bg.jpg") repeat;
+}
+
+/*上部视频播放区域*/
+.video {
+    margin: auto;
+    width: @pageWidth;
+    .video-frame {
+        @inner-height: 675px;
+        background: #eee;
+        height: @inner-height;
+        margin: auto;
+        iframe {
+            width: @pageWidth;
+            height: @inner-height;
+        }
+    }
+    .video-detail {
+        margin: 10px auto 0;
+        > div {
+            display: inline-block;
+            margin: 0;
+        }
+    }
+    /*视频信息*/
+    .left {
+        width: 850px;
+        word-wrap: break-word;
+        > p {
+            margin: 10px;
+        }
+        .name {
+            font-size: 1.4em;
+        }
+        .description {
+            span {
+                display: block;
+            }
+            .transition(max-height);
+            overflow: hidden;
+            max-height: 31.5px;
+        }
+    }
+    /*分享与前往YouTube观看*/
+    .right {
+        position: relative;
+        padding: 10px;
+        vertical-align: top;
+        width: 350px;
+        > div {
+            float: right;
+            height: 42px;
+        }
+        .share-icon {
+            overflow: hidden;
+            cursor: pointer;
+            margin: 0 10px;
+            height: 42px;
+            width: 42px;
+            background: transparent url("@{webpath_cn}video/index/share.svg") no-repeat center;
+            background-size: 400px;
+            &:hover {
+                background-color: #fff;
+                border: 1px solid lighten(@gray, 10%);
+                border-bottom: none;
+                .border-skip {
+                    display: block;
+                }
+                .bdsharebuttonbox {
+                    position: absolute;
+                    display: block;
+                    border: 1px solid lighten(@gray, 10%);
+                    background: #fff;
+                }
+            }
+        }
+        .border-skip {
+            display: none;
+            position: absolute;
+            z-index: 2;
+            border-top: 1px solid #fff;
+            top: 52px;
+            right: 141px;
+            height: 1px;
+            width: 40px;
+        }
+        .bdsharebuttonbox {
+            display: none;
+            padding: 10px;
+            right: 140px;
+            top: 52px;
+        }
+        .go-youTube {
+            .transition(background);
+            .border-radius(6px);
+            cursor: pointer;
+            color: white;
+            background: @base-color;
+            padding: 10px 10px;
+            display: block;
+            width: 120px;
+            height: 100%;
+            &:hover{
+                background: darken(@base-color,5%);
+
+            }
+        }
+    }
+}
+
+/*视频列表*/
+.videos {
+    @height: 380*9/16px;
+    @width: 380px;
+    -moz-user-select: none; /*火狐*/
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10*/
+    user-select: none;
+    width: @pageWidth+20;
+    margin: 20px auto 0;
+    position: relative;
+    &:hover {
+        .scroll-wrap {
+            display: block;
+        }
+    }
+    .header {
+        text-align: center;
+    }
+    .scroll-wrap {
+        display: none;
+        width: 30px;
+        position: absolute;
+        margin-top: 20px;
+        right: -20px;
+        height: 0;
+    }
+    .scroll {
+        margin: auto;
+        width: 10px;
+        border-radius: 20px;
+        background: #ccc;
+        height: 100%;
+    }
+    .items-wrap {
+        .transition(all);
+        margin-top: 10px;
+        padding-top: 10px;
+        height: (100+@height)*2+10;
+        overflow: scroll;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+    .items {
+        margin: 0 -5px;
+        text-align: left;
+        .transition(all);
+        .item {
+            &.active {
+                .name {
+                    color: @base-color;
+                }
+                .current-play {
+                    display: inline-block;
+                    color: @base-color;
+                }
+                .thumbnail {
+                    @shadow-color: fadeout(@base-color, 65%);
+                    box-shadow: 0 1px 5px 2px @shadow-color,0 -1px  5px 2px @shadow-color;
+                    -webkit-box-shadow: 0 1px 5px 2px @shadow-color,0 -1px  5px 2px @shadow-color;
+                    -moz-box-shadow: 0 1px 5px 2px @shadow-color,0 -1px  5px 2px @shadow-color;
+
+                }
+                .play-icon {
+                    background: url("@{webpath_cn}video/index/playing.svg") no-repeat center;
+                }
+                &:hover {
+                    .item-content {
+                        cursor: default;
+                        -webkit-box-shadow: none;
+                        -moz-box-shadow: none;
+                        box-shadow: none;
+                    }
+                }
+            }
+            width: @width;
+            display: inline-block;
+            margin: 0 15px;
+            height: 100+@height;
+            padding: 0 0 20px 0;
+        }
+        .item-content {
+            &:hover {
+                cursor: pointer;
+                box-shadow: rgba(0, 0, 0, 0.156863) 0 3px 10px, rgba(0, 0, 0, 0.227451) 0 3px 10px;
+                -webkit-box-shadow: rgba(0, 0, 0, 0.156863) 0 3px 10px, rgba(0, 0, 0, 0.227451) 0 3px 10px;
+                -moz-box-shadow: rgba(0, 0, 0, 0.156863) 0 3px 10px, rgba(0, 0, 0, 0.227451) 0 3px 10px;
+            }
+            .transition(all);
+            height: 100%;
+        }
+        .thumbnail {
+            position: relative;
+            overflow: hidden;
+            width: @width;
+            height: @height;
+        }
+        .play-icon {
+            @size: 60px;
+            width: @size;
+            height: @size;
+            left: 50%;
+            top: 50%;
+            margin-left: -@size/2;
+            margin-top: -@size/2;
+            position: absolute;
+            display: inline-block;
+            background: url("@{webpath_cn}video/index/play.svg") no-repeat center;
+            background-size: @size;
+        }
+        .thumbnail-pic {
+            width: @width;
+            margin-top: -(285-@height)/2;
+        }
+        .item-desc {
+            .transition(all);
+            height: 80px;
+            padding-left: 1em;
+            padding-right: 1em;
+            padding-top: 5px;
+        }
+        .name {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .view-count {
+            background: url("@{webpath_cn}video/index/view.svg") no-repeat center left;
+            background-size: 22px;
+            padding-left: 25px;
+        }
+        .current-play {
+            margin-left: 10px;
+            display: none;
+        }
+    }
+}
+
+.bd_weixin_popup {
+    box-sizing: content-box;
+}

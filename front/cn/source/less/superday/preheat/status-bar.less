@@ -1,0 +1,46 @@
+/**
+ * Author: CodeLai
+ * Email: codelai@dotdotbuy.com
+ * DateTime: 2016/9/27 10:33
+ * Description: 活动时间
+ */
+@import "common";
+
+.status-bar {
+    @bg-color: #f2f2f2;
+    margin-bottom: 60px;
+    height: 120px;
+    background: @bg-color;
+    ul {
+        margin: auto;
+        width: 1200px;
+        height: 100%;
+    }
+    li {
+        display: inline-block;
+        width: 400px;
+        height: 100%;
+        text-align: center;
+        &.active {
+            background: #fff;
+            color: #de3065;
+        }
+        &.end {
+            color: #999;
+        }
+        > p:first-child {
+            margin-top: 30px;
+            font-size: 26px;
+            line-height: 26px;
+        }
+        > p:last-child {
+            margin-top: 20px;
+            font-size: 20px;
+            line-height: 20px;
+        }
+    }
+    .timer {
+        display: inline-block;
+        width: 30px;
+    }
+}

@@ -1,0 +1,148 @@
+@import '../../../../plugin/less/class.less';
+.backgroundImg(@color,@name,@row,@col){background:@color url('@{webpath_cn}appdownload/@{name}') no-repeat @row @col}
+/* your business less */
+body{
+  min-width: 760px;
+  margin:0 auto;
+}
+
+.container{
+  width:100%;
+  .appUpper{
+    width:100%;
+    height:665px;
+    .backgroundImg(#fff,"banner.png",0,center);
+    background-size: cover;
+    .content{
+      width:1200px;
+      margin:0 auto;
+      height:665px;
+      position:relative;
+      .qr{
+        position: absolute;
+        left:626px;
+        top:256px;
+        text-align: center;
+        .qrImg{
+          padding-right:20px;
+          border-right:1px solid #303539;
+        }
+        .scan{
+          font-size: 18px;
+          color:#fff;
+          display: block;
+          margin-top: -9px;
+        }
+      }
+      .title{
+        position: absolute;
+        top:142px;
+        left:626px;
+        >img{
+          width:438px;
+        }
+      }
+      .button{
+        float:right;
+        margin-top:275px;
+        >a{
+          display: block;
+          padding:18px 74px 18px 42px ;
+          border-radius: 60px;
+          background-color:#1a69b8;
+          margin-bottom:30px ;
+          &:hover{
+            cursor: pointer;
+          }
+          &:after{
+            display: block;
+            content:"";
+            clear:both;
+          }
+          >em{
+            float:left;
+          }
+          >.cat_intro{
+            margin-left:28px;
+            em{
+              display: block;
+              &:first-child{
+                font-size: 17px;
+                color:#fff;
+              }
+              &:last-child{
+                font-size: 12px;
+                color:#a7bdde;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .appLower{
+    width:100%;
+    height:883px;
+    padding-top: 60px;
+    position:relative;
+    overflow:hidden;
+    .sd{
+      position:absolute;
+      bottom:0;
+      margin:0 auto;
+      width:100%;
+      >img{
+        width:100%;
+      }
+    }
+    .content{
+      width:1200px;
+      margin:0 auto;
+      &:after{
+        display: block;
+        content:"";
+        clear: both;
+      }
+      >div{
+        float:left;
+        width:400px;
+        .iphone{
+          text-align: center;
+          margin-top:67px;
+        }
+        .intro{
+          text-align: center;
+          margin-top: 33px;
+          >em{
+            display: block;
+            line-height: 1.5;
+            &:first-child{
+              font-size: 32px;
+              color:#152340;
+              font-weight: 600;
+              line-height: 2;
+            }
+            &:last-child{
+              font-size: 16px;
+              color:#666;
+              line-height: 1.5;
+            }
+          }
+        }
+        .circle{
+          width:182px;
+          height:182px;
+          border-radius: 50%;
+          background-color: #1a69b8;
+          margin:0 auto;
+          display:table;
+          >img{
+            display:block;
+            margin:0 auto;
+            margin-top:65px;
+          }
+        }
+      }
+    }
+  }
+}

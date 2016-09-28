@@ -1,0 +1,31 @@
+@import '../../../../../plugin/less/class.less';
+
+/* your business less */
+*{margin: 0;padding: 0;}
+html,body{width:100%;height:100%}
+.content{ position: relative;overflow: hidden;}
+a{cursor: pointer!important;}
+@pageWidth: 1200px;
+@secnavHeight:50px;
+.transition(@time){transition: all @time ease-in-out;}
+.backgroundImg(@color,@name,@row,@col){background:@color url('@{webpath_cn}sthgood/ideas/@{name}') no-repeat @row @col}
+a{cursor: pointer !important;}
+//ideas
+.ideas{width:100%;overflow: hidden;.backgroundImg(#ffffff,'ideas_bg.jpg',center,top);background-size:100% 542px;
+    .ideas-box{width: @pageWidth;margin: 50px auto;}
+    .path-nav{width: 100%;height: 40px;padding-top:20px;font-size: 14px;color: #333333;overflow: hidden;}
+    span{display:block;float: left;padding-right: 13px;margin-right:5px;height: 12px;line-height: 12px;background: url('@{webpath_cn}sthgood/ideas/path_nav.png') no-repeat right center;background-size:7px 7px;
+        &:last-child{background-size: 0 0;}
+    }
+    .ideas-content{width: 100%;position: relative;background: #fff;padding-top: 40px;
+        &:before,&:after{content: '';width: 513px;height: 2px;background: #333333;position: absolute;top:0;}
+        &:before{left: 0;}
+        &:after{right: 0;}
+        h1{font-size: 24px;color: #333333;text-align: center;width:100%;height: 24px;line-height: 24px;position: absolute;overflow: hidden;top: -12px;}
+        .ideas-item{display: inline-block;width: 570px;height: 285px;margin: 0 0 20px 20px;
+            img{width: 570px;height: 285px;}
+            a{overflow: hidden;}
+        }
+    }
+    
+}

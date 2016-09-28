@@ -1,0 +1,48 @@
+@import '../../../../../../plugin/less/class.less';
+@pageWidth: 1200px;
+@secnavHeight:50px;
+.backgroundImg(@color,@name,@row,@col){background:@color url('@{webpath_cn}sthgood/goodIndex/@{name}') no-repeat @row @col}
+//secnav
+.secnavbox{width:100%;background:rgba(255,255,255,.8);position: absolute;z-index: 4;top:0;
+  .secnav{width:@pageWidth;margin:0 auto;position: relative;}
+  .secnav-left{float:left;font-size:18px;color:#641eb4;height:@secnavHeight;line-height:@secnavHeight;
+    a{text-decoration: none;}
+    .daigou{padding-right:11px;height:24px;text-align:left;margin-right:11px;font-size:24px;color:#393939;border-right:1px solid #142341;font-weight: bold;}
+  }
+  .secnav-search{float:right;min-width:25px;width:auto;height:30px;position:relative;margin-top: 10px;
+    input{position:absolute;height: 30px;line-height:30px;background: #f6f4f7;color:#999999;text-indent: 13px;border: 0;outline: none;}
+    .search{width:0;left:0px;}
+    .search-active{width:760px;left:-735px;}
+//  .search-active{width:817px;left:-790px;}
+    img{position:absolute;right:10px;top:6px;width:18px;height:18px;display:block;cursor: pointer;}
+  }
+  .secnav-right{float: right;overflow: hidden;
+      li{float: left;height:@secnavHeight;line-height:@secnavHeight;padding: 0 19px;}
+      a{font-size: 14px;color:#666666;&:hover{color: #641eb4;}}
+  }
+  .secnav-right-show{display: inline-block;}
+  .secnav-right-hide{display: none;}
+  .secnav-more{float:right;width:42px;height: @secnavHeight;cursor: pointer;position: relative;
+    img{width:18px;height:4px;display: block;transform-origin:left;position: absolute;left:50%;top:50%;}
+  }
+  .secnav-more-close{background: #ffffff;
+    img{transform: rotate(0deg) translateX(-50%) translateY(-50%);}
+  }
+  .secnav-more-active{background: #eeeeee;
+    img{transform: rotate(-90deg) translateX(-50%) translateY(-50%);}
+  }
+  .nav-list{position: absolute;top:@secnavHeight;right: 0;overflow: hidden;border: 1px solid #eeeeee;
+    li{background: #ffffff;width:156px;height: 52px;padding-left:20px;line-height: 52px;text-align:left;border-bottom: 1px solid #eeeeee;
+        &:hover{background: #eeeeee;}
+        &:nth-of-type(1),&:nth-of-type(2){.backgroundImg(#fff,'secnav_slide.png',149px,center);background-size:12px 12px;
+            &:hover{.backgroundImg(#eee,'secnav_slide.png',149px,center);}
+            a{color:#6736a3;}
+        }
+    }
+    a{color: #999999;font-size: 14px;cursor: pointer;}
+  }
+  .nav-list-default{display: none;}
+  .nav-list-active{display: block;}
+  
+
+}

@@ -1,0 +1,41 @@
+{
+	"sidenav":[
+		{"value":"前端命名规范"},
+		{"value":"前端目录架构说明"},
+		{"value":"前端细节点说明"},
+		{"value":"webpack配置说明"},
+		{"value":"git分支说明"},
+		{"value":"react组件"},
+		{"value":"webpack业务模块目录初始化"}
+	],
+	"content":[
+		{
+			"title":"前端命名规范",
+			"text":"关于文件命名：\n1.文件全部按功能来命名，并首字母小写中间驼峰式，不要加符号\n\n2.文件夹命名，全部小写，不要符号\n\n3.组件命名，大驼峰，首字母大写，后面都是驼峰式\n\n4.page页面命名，小驼峰，首字母小写，后面驼峰\n\n5.img图片命名，小写，中间用下划线连接\n\n6.css样式的class类，小写，中间使用连接符\n\n欢迎大家补充"
+		},
+		{
+			"title":"前端目录架构说明",
+			"text":"前端项目Orion目录架构说明：\n1.admin//管理后台目录\n2.cache//前端缓存静态文件存放目录\n3.document//开发日志，前端相关说明文档\n    1)开发日志\n    2)introduce//前端开发规范及相关介绍\n4.front//前端开发文件目录\n    1)cn//中文版\n    2)en//英文版\n        1>page//页面，根据功能模块来进行分级\n        2>source//相关资源文件，对应页面进行分级\n    3)plugin//公共文件及插件，这里的base.less和react必须统一\n5.static//前端开发编译之后的文件目录\n"
+		},
+		{
+			"title":"前端细节点说明",
+			"text":"关于less的说明：\n1.公共的plugin中，init.less是负责全局初始化的，\n2.class.less是类库，里面包含了公共path的提取，此类库为按需编译\n3.所有的业务less文件都必须引入class.less，我们将公共path都统一在一个文件里\n\n关于js的说明：\n1.source中的react的js文件夹里，对应page中的HTML，可以是单个JS，也可以是入口文件\n2.如果是入口文件，请在入口文件同目录下创建同名资源文件夹\n\n关于img的说明：\n1.全站图片，全部采用绝对路径的形式引入，地址为：./front/en/source/img\n2.公共path在class.less中设置，例如：@webpath:'//localhost:8004/en/source/img/';\n\n关于react公共组件reactcommon的说明：\n1.公共的react全局组件提取到./front/plugin/reactcommon文件夹下\n2.名称按功能来命名，1个组件一个文件，方便按需编译\n3.组件的资源文件都放在同一个文件夹下，包括js,less,img等，对外只提供一个入口文件，相关资源都在入口文件中封装好\n\n关于公共模块react-plugin的说明：\n1.文件夹./front/en/react-plugin下放的是公用的模块\n2.这里说的公用模块指的是网站的头部导航，页脚，侧导航等，全站公用的模块。\n3.公共模块封装成1个出口文件并按模块功能来命名\n\n关于公共组件plugin文件的说明：\n1.所有用到react，react-dom的同学，都可以直接引用load.js，里面已经包含了公用的组件及路由的封装。\n2.window.supervar里是全站的全局变量的暴露口，尽量控制使用全局变量，要使用的时候，请在这个里面扩展\n3.这里的imgsrc就是HTML里面图片路径的公共path的提取"
+		},
+		{
+			"title":"webpack配置说明",
+			"text":"var webpack = require('webpack');\n//提取webpack公共业务\n//var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');\nvar CopyWebpackPlugin = require('copy-webpack-plugin');\n//var ExtractTextPlugin = require(\"extract-text-webpack-plugin\");\n//work dir\n//edit this to work\nvar myworkpath=\"index\";\nmodule.exports = {\n    //插件项\n    //plugins: [commonsPlugin],\n    plugins: [\n        new CopyWebpackPlugin([\n            //to 是相对output的路径\n            { from: 'front/en/page/'+myworkpath, to: '../../../page/'+myworkpath },\n            { from: 'front/plugin', to: '../../../../plugin' },\n            { from: 'front/en/source/img/'+myworkpath, to: '../../../source/img/'+myworkpath }\n        ], {ignore: ['*.txt']}),\n        //new ExtractTextPlugin(\"../../css/\"+myworkpath+\"/[name].css\"),\n    ],\n    //页面入口文件配置\n    entry: {\n        index:['./front/en/source/js/'+myworkpath+'/mytest.js']\n    },\n    //入口文件输出配置\n    output: {\n       path: './static/en/source/js/'+myworkpath+'/',\n        filename: '[name].js'\n    },\n    //外部\n    //externals: {'react': 'React'},\n    module: {\n        //加载器配置\n        loaders: [\n            //.js 文件使用 jsx-loader 来编译处理\n            { test: /\\.js$/, loader: 'jsx?babel' },\n            //.scss 文件使用 style-loader、css-loader 和 less-loader 来编译处理\n            //{ test:/\\.less$/, loader: ExtractTextPlugin.extract(\"style\", \"css!less\")},\n            { test: /\\.less$/, loader: 'style!css!less' },\n            //图片文件使用 url-loader 来处理，小于8kb的直接转为base64\n            //{ test: /\\.(png|jpg)$/, loader: 'url-loader?limit=8192' },\n            //pic loader\n            //{ test: /\\.(png|jpg|jpeg|gif)$/, loader: \"file-loader?name=../../img/\"+myworkpath+\"/[hash:8].[name].[ext]\" }\n        ]\n    }\n};\n\n关于webpack的一些说明：\n1.CopyWebpackPlugin是一个复制插件，用来将不需要编译的文件拷贝到static下\n2.commonsPlugin是用来提取共用文件的插件\n3.ExtractTextPlugin是用来分离出less编译的css文件，这里我们不需要用到\n4.日常工作只需要将myworkpath设置到你的page下对应的开发目录就行了。"
+		},
+		{
+			"title":"git分支说明",
+			"text":"目前只有2个分支：\n1.master//主分支，只合并，没有权限提交\n2.development//日常开发分支，大家都往这里提交就好"
+		},
+		{
+			"title":"react组件",
+			"text":"/* react common plugin\n*  author : nero\n*/\n\n//button\nvar Button = React.createClass({\n    getInitialState:function(){\n      return {name:\"button1111\"};\n    },\n    handlelClick:function(){\n      this.setState({name:!this.state.name});\n    },\n    render: function() {\n      var name=this.state.name;\n      return <button className={this.props.className || Button.init.className} aria-my={this.props.my} \n      disabled={this.props.disabled || Button.init.disabled} type={this.props.type} onClick={this.handlelClick}>{name || Button.init.children}</button>;\n    }\n});\n//button init\nButton.init = {\n    children:\"this is a button\",\n    className: \"button\",\n    disabled:false,\n};\n//button check\nButton.propTypes={\n    className:React.PropTypes.string\n}\n\nmodule.exports=Button;\n\n//<Button name=\"John3\" my=\"asdf\" className=\"test3\" />"
+		},
+		{
+			"title":"webpack业务模块目录初始化",
+			"text":"1.服务器同步webpack.config-init.js\n2.设置package.json，在script里添加\"init\": \"webpack --config webpack.config-init.js\"\n3.打开webpack.config-init.js，设置myworkpath，命名是小驼峰\n4.在cmd中运行npm run init，此时front中就已经生成了对应的目录和一些初始化的文件了。"
+		}
+	]
+}

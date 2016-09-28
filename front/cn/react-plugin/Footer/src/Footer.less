@@ -1,0 +1,68 @@
+@import "../../../../plugin/less/class.less";
+
+//@webpath_cn :'../../../../../static/cn/source/img/';
+
+.m-footer{
+  width: 100%; background: #303440;
+}
+
+.footer-wrap{
+  width: @pageWidth; padding: 30px 0; margin: 0 auto; color: #959595; position: relative; background: #303440;
+
+  a{
+    color: #959595; text-decoration: none; cursor: pointer;
+    &:hover{
+      color: #cdcdcd;
+    }
+
+  }
+
+  dl{
+    float: left; width: 174px; margin: 5px;
+    dt{
+      font-size: 16px; font-weight: bold; line-height: 24px; margin-bottom: 22px; color: #cdcdcd;
+    }
+    dd{
+      a{
+        font-size: 14px; line-height: 24px; cursor: pointer;
+      }
+    }
+  }
+
+  .footer-contact{
+    float: right; width: 252px; margin: 5px;
+    p{
+      font-size: 16px; font-weight: bold; line-height: 24px; margin-bottom: 5px; color: #cdcdcd;
+    }
+    a{
+      display: block; font: 20px/24px 'wenquanyi micro hei','microsoft yahei','simsun',sans-serif; color: #1daadf; text-decoration: none; margin-bottom: 30px; cursor: pointer;
+    }
+
+  }
+
+  .footer-bottom{
+    font-size: 12px; line-height: 22px; text-align: center; margin-top: 30px;
+    li{
+      display: inline-block;
+      i{
+        font-style: normal; margin: 0 7px;
+      }
+    }
+    .footer-copyRight{
+      margin-top: 20px;
+    }
+  }
+
+}
+
+.footer-backToTop{
+  position: fixed; z-index: 10; width: 40px; height: 40px; left: 50%; margin-left: 640px; bottom: 40px; cursor: pointer; background: url('@{webpath_cn}Footer/backToTop.png') transparent center no-repeat;
+
+  &:hover{
+    background-color: #393e4d;
+  }
+
+  &.positionBTT{
+    position: absolute; top: -80px;
+  }
+}

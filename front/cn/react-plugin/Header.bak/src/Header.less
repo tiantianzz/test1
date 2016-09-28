@@ -1,0 +1,225 @@
+@import "../../../../plugin/less/class.less";
+
+.m-header{
+  width: 100%; height:44px; position: relative; input:focus{ outline: 0;}
+}
+
+.header-wrap{
+  width: 100%; height: 44px; background: #303440; color: #fff; border-bottom: 1px solid #191b21; box-sizing: border-box;
+
+  a{ color: #fff;}
+  a:hover{ color: #fff; }
+
+  .header-main{ width: @pageWidth; height: 44px; margin: 0 auto; position: relative; overflow: hidden;}
+
+  .header-navBar{ position: relative; z-index: 2;}
+
+  .header-hideSearch{
+    position: absolute; z-index: 1; opacity: 0; cursor: pointer; font-style: normal; right: 0;
+    width: 20px; height: 44px; text-align: center; line-height: 44px; font-size: 18px; padding: 0 10px;
+    transition :all .2s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  }
+
+  .header-logo{
+    float: left; width: 330px; height: 100%;
+
+    a {
+      display: block; width: 120px; height: 100%; text-indent: -3000em; background: url('@{webpath_cn}Header/logo.png') left center no-repeat; cursor: pointer;
+    }
+  }
+
+  .header-nav{
+    float: left;
+
+    li{
+      float: left;
+
+      a{ text-decoration: none; display: inline-block; height: 44px; line-height: 44px; padding: 0 35px; transition:all .2s ease-out; cursor: pointer;}
+      a:hover{
+        opacity: .7; transition:all .2s ease-out;
+        .header-down{
+          border: 5px solid transparent;
+          border-bottom: 8px solid #fff;
+          vertical-align: 1px;
+        }
+      }
+    }
+
+    .header-down{
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border: 5px solid transparent;
+      border-top: 6px solid #fff;
+      margin-left: 4px;
+      vertical-align: -5px;
+    }
+  }
+
+  .header-login{
+    float: right; font-size: 12px; cursor: default; transition: all .2s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    a{ height: 38px; line-height: 38px; opacity: .7; transition:all .2s ease-out;}
+    a:hover{ opacity: 1; transition:all .2s ease-out;}
+    span{ opacity: .7}
+  }
+
+  .header-userInfo{
+    float: right; line-height: 36px; margin-top: 4px; font-size: 12px; transition: all .2s cubic-bezier(0.645, 0.045, 0.355, 1); color: #acacac;
+    & > *{
+      float: left;
+    }
+    a{ color: #acacac; cursor: pointer; line-height: 36px; height: 36px; margin-right: 10px;}
+
+    .header-avatar{
+      display: inline-block; width: 36px; height: 36px; border-radius: 100%; background: url('@{webpath_cn}Header/avatar-default.png') center #4f5360 no-repeat; overflow: hidden;
+      vertical-align: middle; margin-right: 5px;
+      img {
+        width: 100%; height: 100%;
+      }
+    }
+
+    .header-icon-message{ display: block; float: right; width: 36px; height: 36px; background: url('@{webpath_cn}Header/icon-message.png') center no-repeat;}
+  }
+
+  /* 搜索按钮的公用部分 */
+  ._search-btn{
+    width: 20px; height: 44px; padding: 0 10px; cursor: pointer; background: url('@{webpath_cn}Header/icon-search.png') 12px 14px no-repeat;
+  }
+
+  .header-search-btn{
+    ._search-btn;
+    float: right; margin-left: 20px; transition: all .2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  .header-search-btn2{
+    ._search-btn;
+    float: left;
+    cursor: default;
+  }
+
+  .header-searchBar{
+    height: 44px; width: 950px; position: absolute; right: 200%; left: 250px; z-index: 1; opacity: 0; transition: opacity .2s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    input{
+      width:640px; height: 22px; background: transparent; border: 0; line-height: 22px; color: #fff; margin-top: 11px;
+    }
+  }
+
+  /* 切换显示导航条和搜索框 */
+  ._search-transition{ opacity: 0; transform: scale(.5); transition :all .4s cubic-bezier(0.645, 0.045, 0.355, 1);}
+  .active-search{
+    .header-navBar{ z-index: 1}
+    .header-searchBar{ z-index: 2}
+    .header-hideSearch{
+      z-index: 2; opacity: .7;  transition :all .4s .6s ease;
+      &:hover{
+        opacity: .5;
+      }
+    }
+
+    .header-nav {
+
+      a{ ._search-transition;}
+      li:nth-child(4) a{ transition-delay: 75ms; }
+      li:nth-child(3) a{ transition-delay: 105ms; }
+      li:nth-child(2) a{ transition-delay: 140ms; }
+      li:nth-child(1) a{ transition-delay: 175ms; }
+    }
+    .header-login{ ._search-transition; transition-delay: 35ms; }
+    .header-userInfo{ ._search-transition; transition-delay: 35ms; }
+    .header-search-btn{ ._search-transition; transition-delay: 0ms; }
+    .header-searchBar{ opacity: 1; right:auto; animation: ac-gn-searchform-slide 1s 400ms both; transition: opacity .4s .4s ease-out;}
+  }
+
+  .header-subNav{
+    width: 100%; height: 0; position: absolute; top: 44px; left: 0; z-index: 10; background: rgba(48,52,64,.7); overflow: hidden;  transition: height .4s ease;
+    &.showSubNav{
+      height: 140px;
+    }
+  }
+
+
+  .header-subNav-menu{
+    width: 100%; height: 100%; text-align: center;
+
+    li{
+      display: inline-block; width: 100px; height: 90px; margin: 0 22px; padding-top: 20px;
+
+      a{
+        display:inline-block; width: 100%; height: 100%; cursor: pointer; white-space: nowrap;
+
+        i{
+          display: inline-block; width: 42px; height: 42px; margin-top: 10px; background: url('@{webpath_cn}Header/subNav-icon.png') no-repeat;
+
+        }
+
+        h3{ font-weight: normal; margin-top: 6px;}
+      }
+    }
+
+    .header-icon-dg{ background-position: 0 0;}
+    .header-icon-ep{ background-position: 0px -50px;}
+    .header-icon-mall{ background-position: 0px -100px;}
+    .header-icon-tour{ background-position: 0 -150px;}
+    .header-icon-h-dg{ background-position: 0 -200px;}
+    .header-icon-cp{ background-position: 0px -250px;}
+    .header-icon-limit{ background-position: 0px -300px;}
+    .header-icon-search{ background-position: 0px -350px;}
+
+  }
+
+  .header-subNav-server{
+    height: 0; transition: height .5s .2s ease; overflow: hidden;
+    &.showSubMenu{ height: 110px; transition: height .5s ease;}
+  }
+
+  .header-subNav-tool{
+    transform:translateY(40px); transition: transform .5s ease;
+    &.showSubMenu{ transform:translateY(0); transition: transform .5s ease;}
+  }
+
+
+
+}
+
+.header-wrap.header-fixed{
+  position: fixed; top: 0; z-index: 100;
+}
+
+.m-header.active-history{
+  .header-history{
+    display: block; width: 100%; opacity: 1; transition: opacity .4s .4s ease-in-out; z-index: 1000;
+    .header-historyList{ z-index: 10}
+  }
+}
+
+/* 搜索历史 */
+.header-history{
+  width: 1px; height: 2000px; background: rgba(0,0,0,.2); position: fixed; opacity: 0; overflow: hidden; transition: opacity .4s ease-in-out, width 0s .4s ease-in-out;
+
+  .header-historyList{
+    width: 660px; padding: 10px 10px 20px 10px; background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,.1); margin: 0 auto; color: #999;
+
+    dt{ font-size: 12px; line-height: 30px; text-indent: 25px; cursor: default;}
+    dd{
+      text-overflow:ellipsis; overflow:hidden; white-space: nowrap; text-indent: 40px; line-height: 32px;
+      &:hover{
+        cursor: pointer; background: #f2f2f2; color: #0188cc;
+
+      }
+
+    }
+  }
+}
+
+@keyframes ac-gn-searchform-slide {
+  0% {
+    transform: translate3d(100px, 0, 0);
+    animation-timing-function: cubic-bezier(0.11393, 0.8644, 0.14684, 1)
+  }
+  100% {
+    transform: translateZ(0)
+  }
+}

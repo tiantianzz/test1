@@ -1,0 +1,12 @@
+var imgsrc=window.supervar.imgsrc_cn;
+
+/* your logic code */
+class <%= mymodule %> extends React.Component{
+    render(){
+        return(
+            <div>this is your page content</div>
+        )
+    }
+}
+
+export default <%= mymodule %>;

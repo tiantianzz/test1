@@ -1,0 +1,140 @@
+@import '../../../../plugin/less/class.less';
+
+/* your business less */
+*{margin: 0;padding: 0;}
+html,body{width:100%;height:100%;}
+a{cursor: pointer !important;}
+@pageWidth: 1200px;
+.textOver{overflow:hidden;text-overflow:ellipsis;white-space: nowrap; }
+.transition(@time){transition: all @time linear;
+    -weikit-transition: all @time linear;
+    -o-transition: all @time linear;
+    -ms-transition: all @time linear;
+    -moz-transition: all @time linear;
+}
+.backgroundImg(@color,@name,@row,@col,@wid,@hei){background:@color url('@{webpath_cn}subject/@{name}') no-repeat @row @col;background-size:@wid @hei}
+.subject{width: 100%;overflow: hidden;background: #e8e8e8;
+    .banner{width: 1920px;height: 500px;position: relative;left: 50%;
+        img{width: 1920px;height: 500px;position: absolute;left: -50%;}
+    }
+    .subject-content{width: @pageWidth;margin: 0 auto;
+        .user-defined,.optimizing-brand,.hot-sell,.ideas,.beautiful—clothes{width: 100%;margin-bottom: 40px;overflow: hidden;}
+        .user-defined{overflow: hidden;}
+        .user-defined-box{background: #dfdfdf;overflow: hidden;}
+        .optimizing-brand{overflow: hidden;
+            .brand-box{background: #fff;overflow: hidden;}
+            .brand-title{font-size: 20px;color: #2c2c2c;float:left;height: 100px;line-height: 100px;width: 200px;text-align: center;}
+            .brand-content{float: right;margin:19px 21px 0 0;width: 968px;height: 64px;position: relative;overflow: hidden;}
+            .brand-nav{width: 904px;height: 64px;margin: 0 auto;position: relative;overflow: hidden;}
+            ul{width:auto;height: 64px;overflow: hidden;position: absolute;left:0;top:0;display: block;white-space: nowrap;}
+            .brand-move{.transition(.8s);}
+            .brand-over{.transition(0s);}
+            li{width: 144px;height: 62px;display:inline-block;margin-right:8px;position: relative;
+                &:last-child{margin-right: 0;}
+                a{overflow: hidden;}
+                img{width: 142px;height: 62px;border: 1px solid #b5b5b5;}
+                .hover-box{text-align:center;font-size:18px;color:#fff;line-height:38px;width: 100%;position: absolute;left: 0;top:50%;transform: translateY(-50%);overflow: hidden;
+                    .backgroundImg(rgba(200,200,200,.8),'brand_shop.png',center,33px,19px,19px);height: 0;.transition(.2s);
+                }
+                &:hover{
+                    .hover-box{height: 64px;}
+                }
+            }
+            .turn-left,.turn-right{position: absolute;top:16px;overflow: hidden;cursor: pointer;
+                img{width: 15px;height: 28px;} 
+            }
+            .turn-left{left: 0px;}
+            .turn-right{right: 0px;}
+        }
+        //楼层样式一
+        .hot-sell{.transition(.8s);
+            .sell-item{float: left;width: 288px;height: 410px;margin: 0 16px 16px 0;background: #fff;position: relative;
+                .shop-img{width:288px;height: 288px;display: block;}
+                .goods-detail{width: 264px;height: 98px;margin: 12px auto;}
+                p{height: 32px;line-height: 14px;font-size: 14px;color: #666;}
+                .plate-img{width: 16px;height: 16px;display: block;margin-top: 6px;}
+                .goods-buy{float: left;overflow: hidden;margin: 12px 0 0;}
+                .dis-price{font-size: 14px;line-height: 14px;color: #999;text-decoration: line-through;}
+                .now-price{font-size: 18px;line-height: 22px;color: #ff5064;}
+                .buy-now{width: 90px;height: 36px;float: right;color: #fff;border: 0;border-radius: 2px;margin-top: 12px;cursor: pointer;background: #ff5064;text-decoration: none;}
+                .hot-sell-tag{position: absolute;left: 6px;top:-3px;width: 32px;height: 46px;line-height: 46px;font-size: 14px;background: #ff7e00;color: #fff;text-align: center;}
+                .sell-tag-default{display: none;}
+                .sell-tag-selled{display: block;}
+                .cover-selled{position: absolute;left: 84px;top:84px;width: 120px;height: 120px;line-height: 120px;background: rgba(51,51,51,.8);font-size: 18px;color: #fff;
+                    border-radius: 50%;text-align:center;
+                }
+                .cover-selled-default{display: none;}
+                .cover-selled-selled{display: block;}
+                &:nth-of-type(4n+1){margin-right: 0;}
+            }
+        }
+        //楼层样式二
+        .beautiful—clothes{width:100%;.transition(.8s);
+            .clothes-title{width:@pageWidth+(-2px);text-align: center;height:68px;line-height:68px;background:#fff;font-size: 20px;color: #727272;border: solid 1px #bfbfbf;margin-bottom:28px;overflow: hidden;}
+            .clothes-item{width:592px;height:288px;float:left;margin:0 16px 16px 0;
+                a{display:block;position:relative;}
+                .hot-sell-tag{position: absolute;left: 6px;top:-3px;width: 32px;height: 46px;line-height: 46px;font-size: 14px;background: #ff7e00;color: #fff;text-align: center;}
+                .sell-tag-default{display: none;}
+                .sell-tag-selled{display: block;}
+                .cover-selled{position: absolute;left: 84px;top:84px;width: 120px;height: 120px;line-height: 120px;background: rgba(51,51,51,.8);font-size: 18px;color: #fff;border-radius: 50%;text-align:center;  }
+                .cover-selled-default{display: none;}
+                .cover-selled-selled{display: block;}
+                .clothes-img{float:left;width:290px;height:288px;}
+                .clothes-detail{float:left;width:302px;height:288px;background:#fff;position:relative;}
+                p{padding:36px 12px 12px;font-size:18px;line-height:24px;color:#666;}
+                .plate-img{width: 16px;height: 16px;display: block;padding-left:12px;}
+                .clothes-buy{width:108px;height:46px;position:absolute;left:12px;bottom:12px;}
+                .dis-price{font-size: 14px;line-height: 14px;color: #999;margin-bottom:8px;text-decoration: line-through;}
+                .now-price{font-size:26px;line-height: 26px;font-weight:bold;color:#ff5064;}
+                .buy-now{width:120px;height:48px;color:#fff;text-align:center;line-height:48px;font-size:18px;border: 0;border-radius: 2px;cursor: pointer;position:absolute;right:12px;bottom:12px;background: #ff5064;text-decoration: none;}
+                &:nth-of-type(2n+1){margin-right:0;}
+            }
+        }
+        //ideas
+        .ideas{
+            .title{font-size: 20px;color: #2c2c2c;height: 70px;line-height: 70px;background: #949494;width: 100%;overflow: hidden;
+                span{float: left;margin-left: 20px;}
+                a{float: right;margin-right: 20px;padding-right: 28px;background:url('@{webpath_cn}subject/more.png') no-repeat right center;background-size: 24px 11px;
+                    text-decoration:none;color: #2c2c2c;
+                }
+            }
+            .ideas-content{width: 100%;height: 318px;background: #fff;position: relative;overflow: hidden;}
+            .ideas-nav{ height: 256px; width: 1122px; position: relative;overflow: hidden;margin: 22px auto 0;
+                ul{width:auto;height: 256px;overflow: hidden;position: absolute;left: 0;top:0;display: block;white-space: nowrap;}
+                .ul-move{.transition(.8s);}
+                .ul-over{.transition(0s);}
+                li{display:inline-block;height: 256px; width: 350px;margin-right:36px;background: #eaeaea;
+                    &:last-child{margin-right: 0;}
+                    a{overflow: hidden;}
+                    img{width: 350px;height: 175px;}
+                    div{width: 310px;margin:19px auto;text-align: left;}
+                    .ideas-type{color: #999999;font-size: 14px;line-height: 14px;
+                        span{width: 310px;.textOver;}  
+                    }
+                    .ideas-title{font-size: 18px;overflow: hidden;margin-top: 11px;
+                        span{float: right;.textOver;
+                            &:first-child{color: #333333;width: 100px;float: left;}
+                            &:last-child{color:#641eb4;width: 200px;float: right;text-align: right;}
+                        }
+                    }
+                }
+            }
+            .turn-left,.turn-right{position: absolute;top:97px;overflow: hidden;cursor: pointer;
+                img{width: 17px;height: 31px;} 
+            }
+            .turn-left{left: 12px;}
+            .turn-right{right: 12px;}
+        }
+    }
+    //楼层导航
+    .floor-box{position: fixed;top:285px;right:-270px;font-size: 20px;text-align: center;.transition(.4s);overflow: hidden;z-index: 9999;
+        div{cursor: pointer;color: #fff;/*.transition(.8s);*/}
+        .floor-top,.floor-footer{cursor: auto;overflow: hidden;}
+        .floor-default{height: 50px;line-height: 50px;}
+        .floor-active{height: 150px;line-height: 150px;}
+    }
+    .floor-box-default{right:-270px;}
+    .floor-box-active{right:70px;}
+    //标题
+    .sell-title{width:@pageWidth;text-align: center;height: 70px;line-height: 70px;background: #fff;font-size: 20px;color: #727272;margin-bottom: 24px;overflow: hidden;}
+}
